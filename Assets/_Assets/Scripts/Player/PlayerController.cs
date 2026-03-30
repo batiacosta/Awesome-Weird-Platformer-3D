@@ -13,9 +13,6 @@ public class PlayerController : MonoBehaviour
     [Header("Movement Settings")]
     [SerializeField] private InputReader input;
     [SerializeField] private Transform model;
-    [Header("Crouch Settings")]
-    [SerializeField] private float crouchSpeed = 4f;
-    [SerializeField] private float crouchHeight = 1f;
     
     [Header("References")]
     private CharacterController _controller;
@@ -24,7 +21,6 @@ public class PlayerController : MonoBehaviour
     private Vector2 _inputMove;
     private Vector3 _velocity;
     private bool _isGrounded;
-    private bool _isCrouching;
     private bool _canMoveX = true;
     private bool _canMoveZ = false;
     private MoverAllower _moverAllower = null;
@@ -105,7 +101,7 @@ public class PlayerController : MonoBehaviour
 
     private void OnJumpPerformed()
     {
-        if (_controller.isGrounded && !_isCrouching)
+        if (_controller.isGrounded)
         {
             _velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
         }
@@ -123,7 +119,7 @@ public class PlayerController : MonoBehaviour
     }
     private void HandleMovementVelocity()
     {
-        float currentSpeed = _isCrouching ? crouchSpeed : moveSpeed;
+        float currentSpeed = moveSpeed;
         Vector3 desiredMove = Vector3.zero;
 
         var moveX = 1f;
