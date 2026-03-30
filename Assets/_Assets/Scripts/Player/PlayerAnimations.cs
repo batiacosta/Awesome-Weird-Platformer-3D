@@ -36,7 +36,6 @@ public class PlayerAnimations : MonoBehaviour
 
     private void OnMovementCanceled()
     {
-        Debug.Log("Movement Canceled");
         _animator.SetBool("Running", false);
     }
 
