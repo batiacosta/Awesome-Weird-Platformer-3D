@@ -36,12 +36,14 @@ public class PlayerController : MonoBehaviour
     {
         input.OnMovePerformed += OnMovememtPerformed;
         input.OnMoveCanceled += OnMoveCanceled;
+        input.OnJumpPerformed += OnJumpPerformed;
     }
 
     private void OnDisable()
     {
         input.OnMovePerformed += OnMovememtPerformed;
         input.OnMoveCanceled += OnMoveCanceled;
+        input.OnJumpPerformed += OnJumpPerformed;
     }
 
     private void Update()
@@ -59,6 +61,14 @@ public class PlayerController : MonoBehaviour
     private void OnMoveCanceled(Vector2 movementDirection)
     {
         _inputMove = movementDirection;
+    }
+
+    private void OnJumpPerformed()
+    {
+        if (_controller.isGrounded && !_isCrouching)
+        {
+            _velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
+        }
     }
 
     private void ApplyGravity()

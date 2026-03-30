@@ -857,7 +857,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 8
   jumpHeight: 2.5
-  gravity: -25
+  gravity: -50
   input: {fileID: 11400000, guid: c0f218294ab6d4dd3ba6b2c7bf25b046, type: 2}
   model: {fileID: 1033579992}
   crouchSpeed: 4
