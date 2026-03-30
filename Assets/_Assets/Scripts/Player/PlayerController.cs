@@ -2,9 +2,15 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class PlayerController : MonoBehaviour
 {
+    public event Action OnMovementPerformed;
+    public event Action OnMovementCanceled;
+    public event Action OnJump;
+    public event Action OnAttack;
+    
     [Header("Settings")]
     [SerializeField] private float moveSpeed = 8f;
     [SerializeField] private float jumpHeight = 2.5f;
@@ -14,9 +20,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private InputReader input;
     [SerializeField] private Transform model;
     
-    [Header("References")]
     private CharacterController _controller;
-
     private float _originalHeight;
     private Vector2 _inputMove;
     private Vector3 _velocity;
