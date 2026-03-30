@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour
     public event Action OnMovementCanceled;
     public event Action OnJump;
     public event Action OnAttack;
+    public event Action OnDeath; 
     
     [Header("Settings")]
     [SerializeField] private float moveSpeed = 8f;
@@ -152,15 +153,21 @@ public class PlayerController : MonoBehaviour
     {
         if (model == null) return;
 
-        if (Mathf.Abs(_inputMove.x) > 0.01f)
+        Vector3 moveDir = new Vector3(_inputMove.x, 0f, _inputMove.y);
+
+        if (moveDir.sqrMagnitude > 0.001f)
         {
-            float direction = Mathf.Sign(_inputMove.x);
-            model.localScale = new Vector3(direction, 1f, 1f);
+            model.right = moveDir.normalized;
         }
     }
     
     private void OnAttackPerformed()
     {
         OnAttack?.Invoke();
+    }
+
+    public void Die()
+    {
+        OnDeath?.Invoke();
     }
 }
