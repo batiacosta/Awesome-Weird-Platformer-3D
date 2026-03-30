@@ -21,7 +21,6 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Transform model;
     
     private CharacterController _controller;
-    private float _originalHeight;
     private Vector2 _inputMove;
     private Vector3 _velocity;
     private bool _isGrounded;
@@ -32,7 +31,6 @@ public class PlayerController : MonoBehaviour
     private void Awake()
     {
         _controller = GetComponent<CharacterController>();
-        _originalHeight = _controller.height;
     }
 
     private void OnEnable()
@@ -40,6 +38,7 @@ public class PlayerController : MonoBehaviour
         input.OnMovePerformed += OnMovememtPerformed;
         input.OnMoveCanceled += OnMoveCanceled;
         input.OnJumpPerformed += OnJumpPerformed;
+        input.OnAttackPerformed += OnAttackPerformed;
     }
 
     private void OnDisable()
@@ -47,6 +46,7 @@ public class PlayerController : MonoBehaviour
         input.OnMovePerformed -= OnMovememtPerformed;
         input.OnMoveCanceled -= OnMoveCanceled;
         input.OnJumpPerformed -= OnJumpPerformed;
+        input.OnAttackPerformed -= OnAttackPerformed;
     }
 
     private void Update()
@@ -96,11 +96,13 @@ public class PlayerController : MonoBehaviour
     private void OnMovememtPerformed(Vector2 movementDirection)
     {
         _inputMove = movementDirection;
+        OnMovementPerformed?.Invoke();
     }
 
     private void OnMoveCanceled(Vector2 movementDirection)
     {
         _inputMove = movementDirection;
+        OnMovementCanceled?.Invoke();
     }
 
     private void OnJumpPerformed()
@@ -108,6 +110,7 @@ public class PlayerController : MonoBehaviour
         if (_controller.isGrounded)
         {
             _velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
+            OnJump?.Invoke();
         }
     }
 
@@ -154,5 +157,10 @@ public class PlayerController : MonoBehaviour
             float direction = Mathf.Sign(_inputMove.x);
             model.localScale = new Vector3(direction, 1f, 1f);
         }
+    }
+    
+    private void OnAttackPerformed()
+    {
+        OnAttack?.Invoke();
     }
 }

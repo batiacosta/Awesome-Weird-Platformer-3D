@@ -216,11 +216,37 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1596197722583723318, guid: cf4733cfa59b3493a81175556385e10a, type: 3}
   m_PrefabInstance: {fileID: 468478995}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &479775855 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 2a11e117a4b584e67a19c55646600806, type: 3}
+  m_PrefabInstance: {fileID: 1156115495}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &479775856 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 2a11e117a4b584e67a19c55646600806, type: 3}
   m_PrefabInstance: {fileID: 1156115495}
   m_PrefabAsset: {fileID: 0}
+--- !u!95 &479775857
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 479775855}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: dfcc4e835c3d14850b3117c6e4ad6df8, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &518007210
 GameObject:
   m_ObjectHideFlags: 0
@@ -324,7 +350,7 @@ Transform:
   m_GameObject: {fileID: 530438518}
   serializedVersion: 2
   m_LocalRotation: {x: 0.19932617, y: 0.2637825, z: -0.05580908, w: 0.9421111}
-  m_LocalPosition: {x: 1.0493515, y: 4.430346, z: -13.63}
+  m_LocalPosition: {x: 1.0494236, y: 4.430346, z: -13.63}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -923,7 +949,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 2a11e117a4b584e67a19c55646600806, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 479775857}
   m_SourcePrefab: {fileID: 100100000, guid: 2a11e117a4b584e67a19c55646600806, type: 3}
 --- !u!1 &1172587400
 GameObject:
@@ -1012,7 +1041,7 @@ Transform:
   m_GameObject: {fileID: 1172587400}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.0493515, y: 4.430346, z: -13.63}
+  m_LocalPosition: {x: 1.0494236, y: 4.430346, z: -13.63}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
