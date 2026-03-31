@@ -12,6 +12,8 @@ El proyecto incluye un sistema de **object pooling**, una **UI completa**, y un 
   - `A` / `←` → Mover a la izquierda
   - `D` / `→` → Mover a la derecha
   - `S` / `↓` → Agacharse / bajar
+  - `Space` → Saltar
+  - `Esc` / `P` → Pausar
 
 - **Gamepad**
   - Stick izquierdo → Mover
