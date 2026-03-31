@@ -3603,6 +3603,37 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1596197722583723318, guid: cf4733cfa59b3493a81175556385e10a, type: 3}
   m_PrefabInstance: {fileID: 584402662}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1344153321
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1344153322}
+  m_Layer: 0
+  m_Name: SpawnPlace
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1344153322
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1344153321}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2129909888}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1360995556 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3844742069663942267, guid: f95a30154a54846f498079ac299672a2, type: 3}
@@ -5911,6 +5942,7 @@ Transform:
   - {fileID: 132364048}
   - {fileID: 1326871660}
   - {fileID: 1784472558}
+  - {fileID: 1344153322}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2129909889
@@ -6010,6 +6042,6 @@ SceneRoots:
   - {fileID: 661875112}
   - {fileID: 2017537953}
   - {fileID: 2129909888}
-  - {fileID: 530438520}
   - {fileID: 7309617082145027713}
   - {fileID: 1233681612}
+  - {fileID: 530438520}
