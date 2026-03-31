@@ -1,0 +1,8 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:VisualElement style="flex-grow: 1; background-color: rgba(185, 161, 57, 0.78); flex-basis: 100%; position: absolute; height: 1083px; width: 1920px;" />
+    <ui:VisualElement style="flex-grow: 1; height: 287px;">
+        <ui:Label tabindex="-1" text="Pause" parse-escape-sequences="true" display-tooltip-when-elided="true" name="Title" style="font-size: 150px; -unity-font: url(&quot;project://database/Assets/UI%20Toolkit/UnityThemes/UnityDefaultRuntimeTheme.tss?fileID=2230732570650464555&amp;guid=b343e14bb7d1f4c11bd57b1c9199444e&amp;type=3#NotInter-Regular&quot;); -unity-text-align: lower-center; -unity-font-style: bold; justify-content: flex-end; align-items: center; align-self: center; margin-top: 300px;" />
+    </ui:VisualElement>
+    <ui:VisualElement style="flex-grow: 1; height: 184px; font-size: 50px;" />
+    <ui:Button text="Continue" parse-escape-sequences="true" display-tooltip-when-elided="true" name="ContinueButton" style="font-size: 150px; flex-shrink: 0; align-items: center; justify-content: flex-end; align-self: center; padding-right: 50px; padding-left: 50px; margin-bottom: 200px; border-top-left-radius: 30px; border-top-right-radius: 30px; border-bottom-right-radius: 30px; border-bottom-left-radius: 30px;" />
+</ui:UXML>

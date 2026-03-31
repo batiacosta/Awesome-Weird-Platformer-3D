@@ -24,7 +24,7 @@ public class PauseMenu : MonoBehaviour
     }
     private void Continue()
     {
-        var gameManager = FindObjectOfType<GameManager>();
+        var gameManager = GameManager.Instance;
         gameManager.PlayGame();
     }
 }

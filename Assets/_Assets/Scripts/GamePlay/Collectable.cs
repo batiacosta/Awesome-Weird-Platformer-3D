@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Collectable : MonoBehaviour
 {
-    private void Awake()
+    private void OnEnable()
     {
         
     }

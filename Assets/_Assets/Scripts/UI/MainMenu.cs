@@ -26,7 +26,6 @@ public class MainMenu : MonoBehaviour
 
     private void PlayGame()
     {
-        var gameManager = FindObjectOfType<GameManager>();
-        gameManager.PlayGame();
+        GameManager.Instance.PlayGame();
     }
 }
