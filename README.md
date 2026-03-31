@@ -69,5 +69,4 @@ El proyecto incluye un sistema de **object pooling**, una **UI completa**, y un 
 
 ## 👥 Colaboradores
 
-- Desarrollador: *Tu Nombre*
-- Agradecimientos a la comunidad de Unity y su documentación.
+- Desarrollador: David Acosta
