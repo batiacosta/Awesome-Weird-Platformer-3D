@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 using Unity.VisualScripting;
+using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
 
 public class GameManager : MonoBehaviour
@@ -19,6 +20,8 @@ public class GameManager : MonoBehaviour
         Pause,
         GameOver
     }
+    public enum FinalState { Win, Lose }
+    public FinalState FinalStateMatch { get; private set; }
 
     public GameState CurrentGameState => _currentGameState;
 
@@ -33,8 +36,6 @@ public class GameManager : MonoBehaviour
 
     private int hearts = 1;
     private int score;
-
-    //[SerializeField] private MainMenu mainMenu;
 
     private void Awake()
     {
@@ -138,6 +139,7 @@ public class GameManager : MonoBehaviour
         if (hearts <= 0)
         {
             SetGameState(GameState.GameOver);
+            FinalStateMatch = FinalState.Lose;
         }
         else
         {
@@ -147,6 +149,18 @@ public class GameManager : MonoBehaviour
             character.enabled = true;
         }
     }
+
+    public void WinGame()
+    {
+        FinalStateMatch = FinalState.Win;
+        SetGameState(GameState.GameOver);
+    }
+
+    public void PlayAgain()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+    
 }
     
     
