@@ -20,6 +20,10 @@ El proyecto incluye un sistema de **object pooling**, una **UI completa**, y un 
 
 ---
 
+## Link del juego
+
+- https://play.unity.com/en/games/bd4bf954-572e-4ce0-9fe8-ab355123e0c2/the-weird-platformer
+
 ## ⚙️ Características
 
 ### 🔄 Object Pooling
