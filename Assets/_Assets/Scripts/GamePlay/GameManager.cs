@@ -27,10 +27,11 @@ public class GameManager : MonoBehaviour
     [SerializeField] private UIDocument gameOverUI;
     [SerializeField] private UIDocument scoreUI;
     [SerializeField] private GameObject player;
+    [SerializeField] private Transform playerSpawnPosition;
     
     private GameState _currentGameState = GameState.Menu;
 
-    private int hearts;
+    private int hearts = 1;
     private int score;
 
     //[SerializeField] private MainMenu mainMenu;
@@ -49,14 +50,40 @@ public class GameManager : MonoBehaviour
     private void SetGameState(GameState newGameState)
     {
         _currentGameState = newGameState;
+        HideAllMenus();
+        switch (_currentGameState)
+        {
+            case GameState.Menu:
+                ShowMainMenu();
+                break;
+            case GameState.Playing:
+                ShowScoreUI();
+                break;
+            case GameState.Pause:
+                ShowPauseMenu();
+                break;
+            case GameState.GameOver:
+                ShowGameOver();
+                break;
+        }
     }
 
+    private void ShowScoreUI() => scoreUI.gameObject.SetActive(true);
+    private void ShowGameOver() => gameOverUI.gameObject.SetActive(true);
+    private void ShowPauseMenu() => pauseMenuUI.gameObject.SetActive(true);
     
-
     private void HideMainMenu() => mainMenuUI.gameObject.SetActive(false);
     private void HideGameOver() => gameOverUI.gameObject.SetActive(false);
     private void HidePauseMenu() => pauseMenuUI.gameObject.SetActive(false);
     private void HideScore() => scoreUI.gameObject.SetActive(false);
+
+    private void HideAllMenus()
+    {
+        HideGameOver();
+        HidePauseMenu();
+        HideScore();
+        HideMainMenu();
+    }
     
     public void ShowMainMenu()
     {
@@ -77,15 +104,11 @@ public class GameManager : MonoBehaviour
     public void PauseGame()
     {
         SetGameState(GameState.Pause);
-        pauseMenuUI.gameObject.SetActive(true);
-        HideScore();
     }
 
     public void GameOver()
     {
         SetGameState(GameState.GameOver);
-        gameOverUI.gameObject.SetActive(true);
-        HideScore();
     }
 
     public void ResetScore()
@@ -106,6 +129,24 @@ public class GameManager : MonoBehaviour
     
     public int GetHearts() => hearts;
     public int GetScore() => score;
+
+    public void RespawnPlayer()
+    {
+        hearts--;
+        OnHeartChanges?.Invoke();
+        if (hearts <= 0)
+        {
+            SetGameState(GameState.GameOver);
+        }
+        else
+        {
+            Debug.Log($"{hearts} hearts left");
+            var character = player.GetComponent<CharacterController>();
+            character.enabled = false;
+            player.transform.position = playerSpawnPosition.position;
+            character.enabled = true;
+        }
+    }
 }
     
     

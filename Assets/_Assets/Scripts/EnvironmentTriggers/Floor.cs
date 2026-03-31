@@ -7,7 +7,6 @@ public class Floor : MonoBehaviour
 {
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.TryGetComponent(out PlayerController playerController))
-            playerController.Die();
+        if(other.gameObject.TryGetComponent<PlayerController>(out var player)) player.Die();
     }
 }

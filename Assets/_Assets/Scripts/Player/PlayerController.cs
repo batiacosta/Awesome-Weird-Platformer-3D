@@ -197,6 +197,7 @@ public class PlayerController : MonoBehaviour
 
     public void Die()
     {
+        GameManager.Instance.RespawnPlayer();
         OnDeath?.Invoke();
     }
     
