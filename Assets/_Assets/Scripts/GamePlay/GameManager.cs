@@ -20,7 +20,7 @@ public class GameManager : MonoBehaviour
         Pause,
         GameOver
     }
-    public enum FinalState { Win, Lose }
+    public enum FinalState { Win, Lose, Nothing }
     public FinalState FinalStateMatch { get; private set; }
 
     public GameState CurrentGameState => _currentGameState;
@@ -55,6 +55,7 @@ public class GameManager : MonoBehaviour
         switch (_currentGameState)
         {
             case GameState.Menu:
+                FinalStateMatch = FinalState.Nothing;
                 ShowMainMenu();
                 break;
             case GameState.Playing:
@@ -138,8 +139,8 @@ public class GameManager : MonoBehaviour
         OnHeartChanges?.Invoke();
         if (hearts <= 0)
         {
-            SetGameState(GameState.GameOver);
             FinalStateMatch = FinalState.Lose;
+            SetGameState(GameState.GameOver);
         }
         else
         {

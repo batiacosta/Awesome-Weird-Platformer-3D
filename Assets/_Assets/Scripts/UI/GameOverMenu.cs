@@ -18,19 +18,7 @@ public class GameOverMenu : MonoBehaviour
     private void OnEnable()
     {
         _root = GetComponent<UIDocument>().rootVisualElement;
-        switch (GameManager.Instance.FinalStateMatch)
-        {
-            case GameManager.FinalState.Win:
-                _finalColor = winColor;
-                _message = "You win!";
-                break;
-            case GameManager.FinalState.Lose:
-                _finalColor = loseColor;
-                _message = "You Lose!";
-                break;
-            default:
-                break;
-        }
+        
         SaveHightestScore();
         SetUIValues();
         _playAgainButton = _root.Q<Button>("Play");
@@ -66,10 +54,24 @@ public class GameOverMenu : MonoBehaviour
         var scoreLabel = _root.Q<Label>("ActualScore");
         scoreLabel.text = GameManager.Instance.GetScore().ToString();
         var bestScoreLabel = _root.Q<Label>("ActualBestScore");
-        bestScoreLabel.text = GetHightestScore().ToString();;
+        bestScoreLabel.text = GetHightestScore().ToString();
+        Debug.Log(GameManager.Instance.FinalStateMatch);
+        switch (GameManager.Instance.FinalStateMatch)
+        {
+            case GameManager.FinalState.Win:
+                _finalColor = winColor;
+                _message = "You win!";
+                break;
+            case GameManager.FinalState.Lose:
+                _finalColor = loseColor;
+                _message = "You Lose!";
+                break;
+            default:
+                break;
+        }
         var messageLabel = _root.Q<Label>("Win");
         messageLabel.text = _message;
-        messageLabel.style.backgroundColor = new StyleColor(_finalColor);
+        messageLabel.style.color = new StyleColor(_finalColor);
     }
     
 }
