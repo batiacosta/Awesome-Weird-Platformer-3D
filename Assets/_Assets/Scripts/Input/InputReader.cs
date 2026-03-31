@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 
 
-[CreateAssetMenu(fileName = "InputReader", menuName = "ScriptableObjects/Input/InputReader")]
+[CreateAssetMenu(fileName = "InputReader", menuName = "MyScriptableObjects/Input/InputReader")]
 public class InputReader : ScriptableObject
 {
     public event Action<Vector2> OnMovePerformed;

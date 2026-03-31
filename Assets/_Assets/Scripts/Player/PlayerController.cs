@@ -1,8 +1,10 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.Pool;
 
 public class PlayerController : MonoBehaviour
 {
@@ -21,6 +23,11 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private InputReader input;
     [SerializeField] private Transform model;
     
+    [Header("Prefabs")]
+    [SerializeField] private ProjectileType projectileType;
+
+    [SerializeField] private Transform _projectileSpawnTransform;
+    
     private CharacterController _controller;
     private Vector2 _inputMove;
     private Vector3 _velocity;
@@ -28,6 +35,8 @@ public class PlayerController : MonoBehaviour
     private bool _canMoveX = true;
     private bool _canMoveZ = false;
     private MoverAllower _moverAllower = null;
+    
+    private ObjectPool<Projectile> _projectilePool;
 
     private void Awake()
     {
@@ -40,6 +49,7 @@ public class PlayerController : MonoBehaviour
         input.OnMoveCanceled += OnMoveCanceled;
         input.OnJumpPerformed += OnJumpPerformed;
         input.OnAttackPerformed += OnAttackPerformed;
+        CreateBulletPool();
     }
 
     private void OnDisable()
@@ -163,11 +173,28 @@ public class PlayerController : MonoBehaviour
     
     private void OnAttackPerformed()
     {
+        Projectile newProjectile = _projectilePool.Get();
+        newProjectile.Init(this, bulletSpawnPosition:  _projectileSpawnTransform.position, this.transform.right);
         OnAttack?.Invoke();
     }
+    
+    private void CreateBulletPool()
+    {
+        _projectilePool = new ObjectPool<Projectile>(
+            () => Instantiate(projectileType.ProjectilePrefab.GetComponent<Projectile>()),
+            projectile => { projectile.gameObject.SetActive(true);},
+            projectile => { projectile.gameObject.SetActive(false);},
+            projectile => { Destroy(projectile.gameObject);},
+            false, // collection checking is not needed here and saves CPU
+            20,
+            40
+        );
+    }
+    public void ReleaseBulletPool(Projectile projectile) => _projectilePool.Release(projectile);
 
     public void Die()
     {
         OnDeath?.Invoke();
     }
+    
 }
