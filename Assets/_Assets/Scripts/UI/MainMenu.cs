@@ -16,13 +16,17 @@ public class MainMenu : MonoBehaviour
 
     private void OnEnable()
     {
-        var gameManager = FindObjectOfType<GameManager>();
-        _startButton.clicked += gameManager.PlayGame;
+        _startButton.clicked += PlayGame;
     }
 
     private void OnDisable()
     {
+        _startButton.clicked -= PlayGame;
+    }
+
+    private void PlayGame()
+    {
         var gameManager = FindObjectOfType<GameManager>();
-        _startButton.clicked -= gameManager.PlayGame;
+        gameManager.PlayGame();
     }
 }

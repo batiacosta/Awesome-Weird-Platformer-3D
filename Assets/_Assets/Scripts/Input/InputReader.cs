@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -25,6 +26,7 @@ public class InputReader : ScriptableObject
         _inputActions.Player.Move.canceled += MoveCanceled;
         _inputActions.Player.Attack.performed += AttackPerformed;
         _inputActions.Player.Jump.performed += JumpPerformed;
+        _inputActions.Player.Pause.performed += OnPause;
     }
 
     private void OnDisable()
@@ -33,6 +35,7 @@ public class InputReader : ScriptableObject
         _inputActions.Player.Move.canceled -= MoveCanceled;
         _inputActions.Player.Attack.performed -= AttackPerformed;
         _inputActions.Player.Jump.performed -= JumpPerformed;
+        _inputActions.Player.Pause.performed -= OnPause;
         _inputActions.Disable();
     }
 
@@ -54,5 +57,10 @@ public class InputReader : ScriptableObject
     private void JumpPerformed(InputAction.CallbackContext obj)
     {
         OnJumpPerformed?.Invoke();
+    }
+
+    private void OnPause(InputAction.CallbackContext obj)
+    {
+        FindObjectOfType<GameManager>().PauseGame();
     }
 }

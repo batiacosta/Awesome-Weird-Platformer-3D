@@ -37,6 +37,7 @@ public class PlayerController : MonoBehaviour
     private MoverAllower _moverAllower = null;
     
     private ObjectPool<Projectile> _projectilePool;
+    private GameManager _gameManager;
 
     private void Awake()
     {
@@ -45,6 +46,7 @@ public class PlayerController : MonoBehaviour
 
     private void OnEnable()
     {
+        _gameManager = FindObjectOfType<GameManager>();
         input.OnMovePerformed += OnMovememtPerformed;
         input.OnMoveCanceled += OnMoveCanceled;
         input.OnJumpPerformed += OnJumpPerformed;
@@ -62,6 +64,7 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
+        if (_gameManager.CurrentGameState != GameManager.GameState.Playing) return;
         HandleMovementVelocity();
         ApplyMovement();
         ApplyGravity();

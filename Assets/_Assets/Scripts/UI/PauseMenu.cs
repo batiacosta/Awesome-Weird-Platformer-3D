@@ -1,18 +1,30 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class PauseMenu : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    private VisualElement _root;
+    private Button _pauseButton;
+    private void Awake()
     {
-        
+        _root = GetComponent<UIDocument>().rootVisualElement;
+        _pauseButton = _root.Q<Button>("ContinueButton");
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnEnable()
     {
-        
+        _pauseButton.clicked += Continue;
+    }
+
+    private void OnDisable()
+    {
+        _pauseButton.clicked -= Continue;
+    }
+    private void Continue()
+    {
+        var gameManager = FindObjectOfType<GameManager>();
+        gameManager.PlayGame();
     }
 }
