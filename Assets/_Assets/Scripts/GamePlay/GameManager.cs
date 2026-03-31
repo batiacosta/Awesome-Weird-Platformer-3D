@@ -64,6 +64,7 @@ public class GameManager : MonoBehaviour
                 break;
             case GameState.GameOver:
                 ShowGameOver();
+                player.gameObject.SetActive(false);
                 break;
         }
     }
@@ -140,7 +141,6 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            Debug.Log($"{hearts} hearts left");
             var character = player.GetComponent<CharacterController>();
             character.enabled = false;
             player.transform.position = playerSpawnPosition.position;
