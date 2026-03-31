@@ -22,7 +22,8 @@ El proyecto incluye un sistema de **object pooling**, una **UI completa**, y un 
 
 ## Link del juego
 
-- https://play.unity.com/en/games/bd4bf954-572e-4ce0-9fe8-ab355123e0c2/the-weird-platformer
+- Web:  https://play.unity.com/en/games/bd4bf954-572e-4ce0-9fe8-ab355123e0c2/the-weird-platformer
+- PC: https://github.com/batiacosta/Awesome-Weird-Platformer-3D/releases/tag/Demo
 
 ## ⚙️ Características
 
